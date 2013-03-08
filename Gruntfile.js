@@ -28,7 +28,8 @@ module.exports = function(grunt) {
       basic: {
         cwd: 'test/cases',
         assets: '../assets/*',
-        src: ['*']
+        src: ['*'],
+        dest: 'tmp'
       }
     }
   });

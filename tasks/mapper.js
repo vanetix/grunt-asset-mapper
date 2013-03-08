@@ -33,7 +33,6 @@ module.exports = function(grunt) {
        */
 
       assets = grunt.file.expand({cwd: cwd}, f.assets);
-      console.dir(assets);
 
       /**
        * Filter out non-existent files then iterate over all files
@@ -55,20 +54,22 @@ module.exports = function(grunt) {
       });
 
       src.forEach(function(p) {
-        var s = f.dest ? f.dest : p;
+        var s;
+
+        p = f.flatten ? path.basename(p) : p;
+        s = f.dest ? path.join(f.dest, p) : p;
 
         if(cwd) {
           p = path.join(cwd, p);
         }
 
-        grunt.log.oklns(map(p, assets));
-
         /**
-         * If `f.dest` is set, save to `f.dest` otherwize
+         * If `f.dest` is set, save to `f.dest` otherwise
          * overwrite the original
          */
 
-        //grunt.file.write(map(p, assets), s);
+        grunt.log.writeln('✔ '.green + s.grey);
+        grunt.file.write(s, map(p, assets));
       });
 
     });
