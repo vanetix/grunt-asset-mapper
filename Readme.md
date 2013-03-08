@@ -23,7 +23,21 @@ grunt.loadNpmTasks('grunt-asset-mapper');
 ```javascript
 mapper: {
   basic: {
-    src: ['path/to/assets/**'],
+    assets: ['path/to/assets/**'],
+    src: ['path/to/source/**'],
+    dest: 'path/to/dest'
+  }
+}
+```
+
+**cwd**
+
+```javascript
+mapper: {
+  basic: {
+    cwd: ['path/to'],
+    assets: ['assets/**'],
+    src: ['source/**'],
     dest: 'path/to/dest'
   }
 }
@@ -34,7 +48,8 @@ mapper: {
 ```javascript
 flatten: {
   flatten: true,
-  src: ['path/to/assets/**'],
+  assets: ['path/to/assets/**'],
+  src: ['path/to/source/**'],
   dest: 'path/to/dest'
 }
 ```
